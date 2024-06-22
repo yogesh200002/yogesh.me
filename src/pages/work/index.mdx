@@ -1,56 +1,61 @@
 ---
-title: My Work
-layout: ../../layouts/Layout.astro
+title: Yogesh - My Work
+date: "Saturday, June 22 2024"
+author: "Yogesh S"
 ---
 
-<main class="p-10 pt-2 font-urbanist flex flex-col">
-	<h1 class="font-medium text-4xl mb-8 tracking-tighter">My Work</h1>
+import Layout from "../../layouts/Layout.astro";
 
-    Having ignited my passion for web development, I embarked on a journey to
-    translate my technical background and newfound coding skills into real-world
-    applications. Here's a glimpse into my professional experience,
-    <hr class="my-6 border-neutral-300 dark:border-neutral-700"></hr>
+<Layout title={frontmatter.title}>
+    <main class="p-10 pt-2 font-urbanist flex flex-col">
+        <h1 class="font-medium text-4xl mb-8 tracking-tighter">My Work</h1>
 
-    <div class="flex flex-col gap-4 *:flex *:flex-col *:gap-2">
-        <section>
-            <div>
-                <h2 class="font-medium text-xl mb-1 tracking-tighter">Fullstack Developer</h2>
-                <span class="text-neutral-600 dark:text-neutral-400 text-sm">Lucio</span>
-            </div>
+        Having ignited my passion for web development, I embarked on a journey to
+        translate my technical background and newfound coding skills into real-world
+        applications. Here's a glimpse into my professional experience,
+        <hr class="my-6 border-neutral-300 dark:border-neutral-700"></hr>
 
-            At Lucio, an early-stage startup, I have been instrumental in refactoring the product's codebase, leading to a 50% improvement in performance through efficient optimization of components and libraries.
-            Additionally, I revamped the user interface, significantly enhancing the overall user experience. My notable contributions include creating the KAMI AI dashboard and landing page.
-            KAMI AI is an API as a service product that utilizes OCR technology to read and translate files, allowing users to query the document after processing.
+        <div class="flex flex-col gap-4 *:flex *:flex-col *:gap-2">
+            <section>
+                <div>
+                    <h2 class="font-medium text-xl mb-1 tracking-tighter">Fullstack Developer</h2>
+                    <span class="text-neutral-600 dark:text-neutral-400 text-sm">Lucio</span>
+                </div>
 
-        </section>
+                At Lucio, an early-stage startup, I have been instrumental in refactoring the product's codebase, leading to a 50% improvement in performance through efficient optimization of components and libraries.
+                Additionally, I revamped the user interface, significantly enhancing the overall user experience. My notable contributions include creating the KAMI AI dashboard and landing page.
+                KAMI AI is an API as a service product that utilizes OCR technology to read and translate files, allowing users to query the document after processing.
 
-        <section>
-            <div>
-                <h2 class="font-medium text-xl mb-1 tracking-tighter">Web Developer</h2>
-                <span class="text-neutral-600 dark:text-neutral-400 text-sm">
-                    Dokonaly, Oct 2022 - Feb 2024
-                </span>
-            </div>
+            </section>
 
-            During my tenure at Dokonaly, I led the development of AllMasters.ai, a comprehensive logistics platform that seamlessly integrates three user interfaces into a single system, enhancing user experience and operational efficiency.
-            I implemented state management, data fetching, routing, and form handling functionalities using industry-standard libraries, ensuring a smooth user experience and a maintainable codebase.
-            My role required effective collaboration with cross-functional teams to deliver integrated solutions, showcasing my proficiency in both front-end and back-end development.
-            The logistics product I developed and deployed is currently in production use, delivering measurable improvements to the company's operations.
-        </section>
+            <section>
+                <div>
+                    <h2 class="font-medium text-xl mb-1 tracking-tighter">Web Developer</h2>
+                    <span class="text-neutral-600 dark:text-neutral-400 text-sm">
+                        Dokonaly, Oct 2022 - Feb 2024
+                    </span>
+                </div>
 
-        <section>
-            <div>
-                <h2 class="font-medium text-xl mb-1 tracking-tighter">Junior Engineer</h2>
-                <span class="text-neutral-600 dark:text-neutral-400 text-sm">
-                    Mindtree, Oct 2021 - Sept 2022
-                </span>
-            </div>
+                During my tenure at Dokonaly, I led the development of AllMasters.ai, a comprehensive logistics platform that seamlessly integrates three user interfaces into a single system, enhancing user experience and operational efficiency.
+                I implemented state management, data fetching, routing, and form handling functionalities using industry-standard libraries, ensuring a smooth user experience and a maintainable codebase.
+                My role required effective collaboration with cross-functional teams to deliver integrated solutions, showcasing my proficiency in both front-end and back-end development.
+                The logistics product I developed and deployed is currently in production use, delivering measurable improvements to the company's operations.
+            </section>
 
-            At Mindtree, I provided comprehensive technical support for Microsoft Power BI, assisting clients with troubleshooting, issue resolution, and expert guidance.
-            Leveraging my web development knowledge, I diagnosed and resolved client-reported issues impacting report functionality and data visualization.
-            I developed and implemented custom Power BI solutions, focusing on data manipulation, report creation, and automation to ensure user-friendliness and efficiency.
-            My efforts resulted in maintaining a 98% customer satisfaction rate by consistently resolving level 1 and 2 support requests efficiently and effectively.
-        </section>
-    </div>
+            <section>
+                <div>
+                    <h2 class="font-medium text-xl mb-1 tracking-tighter">Junior Engineer</h2>
+                    <span class="text-neutral-600 dark:text-neutral-400 text-sm">
+                        Mindtree, Oct 2021 - Sept 2022
+                    </span>
+                </div>
 
-</main>
+                At Mindtree, I provided comprehensive technical support for Microsoft Power BI, assisting clients with troubleshooting, issue resolution, and expert guidance.
+                Leveraging my web development knowledge, I diagnosed and resolved client-reported issues impacting report functionality and data visualization.
+                I developed and implemented custom Power BI solutions, focusing on data manipulation, report creation, and automation to ensure user-friendliness and efficiency.
+                My efforts resulted in maintaining a 98% customer satisfaction rate by consistently resolving level 1 and 2 support requests efficiently and effectively.
+            </section>
+        </div>
+    </main>
+
+</Layout>
