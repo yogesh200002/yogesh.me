@@ -1,0 +1,17 @@
+---
+import ThemeSwitch from "./themeSwitch.svelte";
+---
+
+<header class="p-2 sm:p-5 w-full font-urbanist">
+	<nav class="flex justify-between">
+		<div class="flex gap-5 sm:gap-10 items-center">
+			<a href="/">
+				<h2 class="font-bold font-corinthia-bold text-5xl">Y</h2>
+			</a>
+			<ul class="font-light flex gap-5 text-2xl">
+				<li><a href="/work">Work</a></li>
+			</ul>
+		</div>
+		<ThemeSwitch client:load />
+	</nav>
+</header>
