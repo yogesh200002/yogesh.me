@@ -1,0 +1,54 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import MyPicture from "@/assets/images/my-picture.jpg";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Yogesh">
+	<main class="p-10 flex flex-col gap-5 font-urbanist text-lg">
+		<div class="flex flex-col sm:flex-row items-center gap-10">
+			<Image
+				height={150}
+				width={150}
+				class="rounded-full"
+				src={MyPicture}
+				quality="high"
+				loading="eager"
+				alt="Myself"
+			/>
+			<h1 class="font-bold text-5xl sm:text-6xl font-urbanist-italic">
+				Hi! I'm Yogesh
+			</h1>
+		</div>
+		<div>
+			<p class="prose prose-neutral dark:prose-invert">
+				I'm a full stack developer at <a
+					target="_blank"
+					class="font-bold text-xl underline decoration-sky-400 hover:text-sky-400"
+					href="https://www.lucioai.com/">
+					Lucio</a
+				> with a knack for building user-friendly and interactive web
+				applications. I thrive in collaborative environments, working
+				closely with cross-functional teams to deliver high-quality
+				solutions.
+			</p>
+		</div>
+		<div>
+			<h2
+				class="font-bold text-4xl hover:text-red-500 underline decoration-red-500 w-fit">
+				About Me
+			</h2>
+			<p>
+				I began my professional journey in 2021 with a degree in
+				Electrical and Electronics Engineering. While the world of
+				circuits held promise, I discovered a growing fascination with
+				the potential of web development. This sparked a passion for
+				creating user-driven experiences, leading me to self-learn HTML,
+				CSS, and JavaScript. Fueled by this newfound passion, I
+				transitioned into the world of full-stack development, eager to
+				bridge the gap between front-end design and back-end
+				functionality.
+			</p>
+		</div>
+	</main>
+</Layout>
