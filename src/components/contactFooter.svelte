@@ -23,11 +23,15 @@
 		</a>
 	</div>
 	<div class="flex gap-4 items-center justify-center">
-		<a href="mailto:yogeshvishal98@gmail.com">
+		<a
+			aria-label="Mail to yogeshvishal98@gmail.com"
+			href="mailto:yogeshvishal98@gmail.com">
 			<Send />
 		</a>
-		<a href="https://www.linkedin.com/in/yogesh-s-8050971a6/">
-			<Linkedin />
+		<a
+			aria-label="LinkedIn Logo"
+			href="https://www.linkedin.com/in/yogesh-s-8050971a6/">
+			<Linkedin xlink:title="LinkedIn Logo" />
 		</a>
 		<a
 			class="*:dark:fill-white *:fill-black"
