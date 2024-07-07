@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+import Typography from "@tailwindcss/typography";
 
+/** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx}"],
 	darkMode: "selector",
@@ -13,5 +14,5 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [Typography],
 };
