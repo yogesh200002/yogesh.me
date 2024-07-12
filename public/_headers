@@ -3,5 +3,5 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
-  Content-Security-Policy: default-src https: 'unsafe-inline' 'self'; style-src https: 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/lightbulb.min.css ; frame-ancestors 'none';
+  Content-Security-Policy: default-src https: 'unsafe-inline' 'self'; style-src https: 'self' 'unsafe-inline' cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/lightbulb.min.css; frame-ancestors 'none'; object-src 'none'; base-uri 'self'
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
