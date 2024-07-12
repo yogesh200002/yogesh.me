@@ -3,5 +3,5 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; frame-ancestors 'none';
-  Strict-Transport-Security: max-age=63072000
+  Content-Security-Policy: default-src 'none'; style-src cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/lightbulb.min.css ;script-src 'self'; frame-ancestors 'none'; base-uri 'none' ; form-action 'none'
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
