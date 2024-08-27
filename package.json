@@ -6,8 +6,12 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro check && astro build",
-		"preview": "astro preview",
+		"preview": "wrangler pages dev ./dist --compatibility-flags='nodejs_compat'",
 		"astro": "astro"
+	},
+	"browser": {
+		"fs": false,
+		"child_process": false
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.3.4",
