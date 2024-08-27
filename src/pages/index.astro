@@ -2,7 +2,6 @@
 import Layout from "@/layouts/Layout.astro";
 import MyPicture from "@/assets/images/my-picture.jpg";
 import { Image } from "astro:assets";
-import CurrentPlayer from "@/components/currentPlayer.svelte";
 ---
 
 <Layout title="Yogesh S">
@@ -34,7 +33,8 @@ import CurrentPlayer from "@/components/currentPlayer.svelte";
 			</p>
 		</div>
 		<div>
-			<h2 class="font-bold cursor-default text-4xl text-red-300 w-fit">
+			<h2
+				class="font-bold cursor-default text-4xl hover:text-red-500 underline decoration-red-500 w-fit">
 				About Me
 			</h2>
 			<p>
@@ -49,6 +49,5 @@ import CurrentPlayer from "@/components/currentPlayer.svelte";
 				functionality.
 			</p>
 		</div>
-		<CurrentPlayer client:load />
 	</main>
 </Layout>
