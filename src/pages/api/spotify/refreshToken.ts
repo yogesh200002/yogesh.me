@@ -1,4 +1,5 @@
 import { spotifyTokenUrl } from "@/utils/config";
+import { Buffer } from "node:buffer";
 import type { APIContext } from "astro";
 
 export const prerender = false;

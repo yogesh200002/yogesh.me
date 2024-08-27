@@ -10,7 +10,6 @@ export async function GET({ cookies }: APIContext) {
 			headers: {
 				Authorization: "Bearer " + accessToken,
 			},
-			credentials: "include",
 		});
 		if (response.status === 204) {
 			return new Response(JSON.stringify({ message: "success" }));
