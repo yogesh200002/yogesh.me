@@ -5,14 +5,10 @@ export const prerender = false;
 
 export async function GET({ locals }: APIContext) {
 	try {
-		const refreshToken =
-			import.meta.env.SPOTIFY_REFRESH_TOKEN ??
-			locals.SPOTIFY_REFRESH_TOKEN;
-		const clientId =
-			import.meta.env.SPOTIFY_CLIENT_ID ?? locals.SPOTIFY_CLIENT_ID;
-		const clientSecret =
-			import.meta.env.SPOTIFY_CLIENT_SECRET ??
-			locals.SPOTIFY_CLIENT_SECRET;
+		const { env } = locals.runtime;
+		const refreshToken = env.SPOTIFY_REFRESH_TOKEN;
+		const clientId = env.SPOTIFY_CLIENT_ID;
+		const clientSecret = env.SPOTIFY_CLIENT_SECRET;
 		const getUrl =
 			spotifyTokenUrl +
 			"/?" +
