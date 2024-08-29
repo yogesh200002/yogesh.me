@@ -19,31 +19,39 @@
 	<Loader />
 {:then playbackData}
 	{#if playbackData != null}
-		{@const { item, context, progress_ms } = playbackData}
+		{@const {
+			item: { external_urls, album, artists, duration_ms, name },
+			progress_ms,
+		} = playbackData}
 		<div
 			class="flex cursor-default flex-col shadow-md bg-zinc-100 dark:bg-slate-800 rounded-md gap-1 p-2">
 			<span class="font-light text-sm">Currently Listening to</span>
 			<div class="flex items-center gap-3">
 				<img
 					class="h-20 w-20"
-					src={item.album.images[0].url}
+					src={album.images[0].url}
 					alt="Album Cover" />
-				<div class="flex flex-col grow">
+				<div class="flex flex-col grow gap-1">
 					<a
-						href={context.external_urls.spotify}
+						href={external_urls.spotify}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-sm font-light hover:underline"
-						>{item.name}</a>
-					<a
-						href={item.album.external_urls.spotify}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="font-medium hover:underline"
-						>From {item.album.name}</a>
+						class="text-sm font-medium hover:underline">{name}</a>
+					<div class="flex gap-1">
+						{#each artists as { name, external_urls: { spotify } }, index}
+							<a
+								href={spotify}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-sm text-gray-600 dark:text-gray-300 hover:underline"
+								>{index === artists.length - 1
+									? name
+									: name + ", "}</a>
+						{/each}
+					</div>
 					<MusicProgress
 						currentProgress={progress_ms}
-						totalProgress={item.duration_ms} />
+						totalProgress={duration_ms} />
 				</div>
 			</div>
 		</div>
