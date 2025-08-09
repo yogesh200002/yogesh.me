@@ -18,6 +18,6 @@ export default defineConfig({
 			external: ["node:buffer"],
 		},
 	},
-	output: "hybrid",
+	output: "static",
 	adapter: cloudflare(),
 });
