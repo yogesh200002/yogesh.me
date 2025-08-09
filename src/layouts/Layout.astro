@@ -1,8 +1,7 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter, fade } from "astro:transitions";
 import Topbar from "@/components/topbar.astro";
 import ContactFooter from "@/components/contactFooter.svelte";
-import { fade } from "astro:transitions";
 
 const { title } = Astro.props.frontmatter || Astro.props;
 ---
@@ -36,7 +35,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
 		/>
 		<link rel="manifest" href="/site.webmanifest" />
 		<title>{title}</title>
-		<ViewTransitions />
+		<ClientRouter />
 		<style is:global>
 			@font-face {
 				font-family: "Corinthia Bold";
