@@ -6,7 +6,9 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro check && astro build",
-		"preview": "wrangler pages dev ./dist --compatibility-flags='nodejs_compat'",
+		"preview": "wrangler dev --local --port 4321",
+		"deploy:dry": "wrangler deploy --dry-run",
+		"deploy": "wrangler deploy",
 		"astro": "astro"
 	},
 	"browser": {
@@ -39,6 +41,7 @@
 		"prettier": "^3.6.2",
 		"prettier-plugin-astro": "^0.14.1",
 		"svelte": "^5.55.7",
-		"typescript": "^5.3.3"
+		"typescript": "^5.3.3",
+		"wrangler": "^4.0.0"
 	}
 }
