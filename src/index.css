@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+	font-family: "Corinthia";
+	font-display: swap;
+	src: url("/fonts/Corinthia/Corinthia-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Corinthia Bold";
+	font-display: swap;
+	src: url("/fonts/Corinthia/Corinthia-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Urbanist";
+	font-display: swap;
+	src: url("/fonts/Urbanist/Urbanist.ttf");
+}
+
+@font-face {
+	font-family: "Urbanist Italic";
+	font-display: swap;
+	src: url("/fonts/Urbanist/Urbanist-Italic.ttf");
+}
+
+@theme {
+	--font-urbanist: "Urbanist", sans-serif;
+	--font-corinthia: "Corinthia", cursive;
+	--font-corinthia-bold: "Corinthia Bold", cursive;
+	--font-urbanist-italic: "Urbanist Italic", sans-serif;
+}
