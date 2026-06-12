@@ -2,6 +2,7 @@
 import { ClientRouter, fade } from "astro:transitions";
 import Topbar from "@/components/topbar.astro";
 import ContactFooter from "@/components/contactFooter.svelte";
+import "../index.css";
 
 const { title } = Astro.props.frontmatter || Astro.props;
 ---
@@ -13,7 +14,6 @@ const { title } = Astro.props.frontmatter || Astro.props;
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/lightbulb.min.css"
 		/>
-		<link rel="stylesheet" href="./" />
 		<meta name="description" content="Yogesh's Portfolio Site" />
 		<meta name="viewport" content="width=device-width" />
 		<link
