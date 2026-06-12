@@ -19,6 +19,9 @@ export default defineConfig({
 			external: ["node:buffer"],
 		},
 	},
+	build: {
+		format: "file",
+	},
 	output: "static",
 	adapter: cloudflare(),
 });
