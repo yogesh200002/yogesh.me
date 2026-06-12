@@ -1,15 +1,14 @@
 import { spotifyTokenUrl } from "@/utils/config";
 import { Buffer } from "node:buffer";
-import type { APIContext } from "astro";
+import { getSecret } from 'astro:env/server';
 
 export const prerender = false;
 
-export async function GET({ locals }: APIContext) {
+export async function GET() {
 	try {
-		const { env } = locals.runtime;
-		const refreshToken = env.SPOTIFY_REFRESH_TOKEN;
-		const clientId = env.SPOTIFY_CLIENT_ID;
-		const clientSecret = env.SPOTIFY_CLIENT_SECRET;
+		const refreshToken = getSecret("SPOTIFY_REFRESH_TOKEN");
+		const clientId = getSecret("SPOTIFY_CLIENT_ID");
+		const clientSecret = getSecret("SPOTIFY_CLIENT_SECRET");
 		const getUrl =
 			spotifyTokenUrl +
 			"/?" +
