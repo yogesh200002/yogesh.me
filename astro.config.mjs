@@ -19,6 +19,7 @@ export default defineConfig({
 			external: ["node:buffer"],
 		},
 	},
+	trailingSlash: "never",
 	build: {
 		format: "file",
 	},
