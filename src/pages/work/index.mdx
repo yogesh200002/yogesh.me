@@ -10,43 +10,44 @@ import Layout from "../../layouts/Layout.astro";
     <main class="p-10 pt-2 font-urbanist flex flex-col prose prose-stone dark:prose-invert prose-h1:mb-1 prose-h2:mb-1 prose-hr:my-6 prose-p:my-1">
         # My Work
         
-        Having ignited my passion for web development, I embarked on a journey to
-        translate my technical background and newfound coding skills into real-world
-        applications. Here's a glimpse into my professional experience,
+        Since entering the software industry in 2021, I've had the opportunity to work across startups, enterprise environments, and rapidly growing product teams. My experience spans frontend engineering, full-stack product development, developer experience, AI-powered applications, and platform architecture. I've contributed to products serving thousands of users, built systems that support critical business workflows, and helped take ideas from initial concepts to production-ready software.
+        Below is a snapshot of the teams, products, and challenges I've worked on throughout my career.
         ***
 
-        ## Fullstack Developer
+        ## Frontend Developer
         *<a href="https://www.lucioai.com" target="_blank" rel="noopener noreferrer">Lucio</a>*, March 2024 - Present
 
-        - **Early Engineering & Scale** : Joined as the 4th team member and employee #1 on the frontend, anchoring the core architecture through a $5M seed round and scaling the technical infra as we grew into a 50-member, multi-team ecosystem.
+        - Founding frontend engineer on a legal-tech platform serving 3,000+ monthly active users across multiple countries and supporting $1M+ in annual revenue. Built and led a 4-person frontend team from the company's earliest stage.
 
-        - **Build System Modernization** : Spearheaded our migration from Create React App (CRA) to Vite, supercharging developer experience with sub-100ms Hot Module Replacement (HMR) and slashing production build times by 65%.
+        - Built the product's AI Assistant, including agentic workflow UI, multi-agent endpoint orchestration, conversation branching, and parallel response streaming. Architected a fault-tolerant streaming layer on Redis Streams and SSE with automatic session recovery so in-progress AI responses resume after network drops, tab closures, or device switches with no data loss.
 
-        - **Resilient AI Streaming** : Engineered an uninterruptible AI chat streaming architecture utilizing Redis Streams and Server-Sent Events (SSE) to ensure bulletproof session persistence across network drops and device switches.
+        - Bootstrapped and led Lucio Studio, a cross-platform Electron desktop app with a Node.js + Hono backend and React frontend, from its first commit through roughly 30 shipped releases. Took the product from inception to beta while establishing shared architecture and tooling within a Turborepo monorepo. Since Clerk has no native support for Electron, engineered a custom auth implementation to bring unified authentication to the desktop app.
 
-        - **Desktop Application** : Architected and deployed a standalone cross-platform Electron desktop app from scratch (zero to beta) within a Turborepo monorepo setup, using Node.js, Hono, TypeScript, and React.
+        - Migrated the core codebase from CRA to Vite, cutting production build times by 65% and getting HMR under 100ms. Profiled component re-renders and offloaded heavy compute to Web Workers, improving non-blocking UI performance by 50%.
 
-        - **Design System Architecture** : Collaborated with product designers to build a comprehensive design system from the ground up using Base UI, creating a core library of reusable wrappers with advanced generic type inference for strict compile-time type safety.
-
-        - **Performance Engineering** : Audited component re-renders, profiled stack traces, and offloaded heavy compute tasks to Web Workers, securing a 50% performance boost for non-blocking UI execution.
+        - Owned the backend for nearly every feature shipped on the frontend, building Node.js/Express/MongoDB services for auth, multi-tenancy, and Redis-backed streaming infrastructure. Operated full-stack across the platform rather than frontend only.
         ***
 
         ## Web Developer
         *<a href="https://www.allmasters.ai" target="_blank" rel="noopener noreferrer">Allmasters.ai</a>, Oct 2022 - Feb 2024*
 
-        - **Unified Platform Architecture** : Led the frontend development of a sophisticated end-to-end logistics platform, successfully merging three completely separate user interfaces into a single, cohesive dashboard for multiple user personas.
-
-        - **Maintainable Codebase Design** : Established modular component architectures and clean coding standards from scratch, dramatically reducing technical debt and enabling the team to ship features faster.
-
-        - **UI/UX Optimization** : Implemented fluid, highly responsive layouts to guarantee snappy, low-latency user interactions across massive data tables and real-time tracking modules.
+        - Consolidated three separate portals (Shipper, Consignee, and Freight Forwarder), each previously requiring its own login, into a single platform with shared authentication, a shared component library, and unified layouts, replacing three disconnected experiences with one consistent product.
+        
+        - Built a shipment tracking module using polling, giving shippers, consignees, and freight forwarders real-time visibility into cargo location along with the ability to upload and update shipment documents directly from the portal.
+        
+        - Built live booking visibility tied to dynamic rate logic, surfacing real-time container capacity so shippers and freight forwarders automatically saw discounted rates once a container crossed 50% booking capacity.
+        
+        - Built an internal audit log for the operations team to track rate changes, alongside internal tooling for managing origins, destinations, documents, and rates across shipments.
         ***
 
         ## Junior Engineer
         *<a href="https://www.mindtree.com" target="_blank" rel="noopener noreferrer">Mindtree</a>, Oct 2021 - Sept 2022*
 
-        - **Power BI Technical Support** : Provided specialized enterprise technical support for Microsoft Power BI deployments, diagnosing platform bottlenecks, fixing data refresh errors, and resolving complex bugs for corporate clients.
-
-        - **Client Resolution Excellence** : Solved high-priority, multi-layered client technical bottlenecks under tight SLAs, directly contributing to a consistent 98% Customer Satisfaction (CSAT) rating.
+        - Supported enterprise Microsoft Power BI deployments for large corporate customers.
+        
+        - Diagnosed and resolved critical production issues involving data refresh pipelines, reporting systems, and platform performance bottlenecks.
+        
+        - Consistently met strict SLA targets while contributing to a 98% CSAT rating through effective incident resolution and customer support.
         </main>
 
 </Layout>
