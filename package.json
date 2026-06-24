@@ -42,6 +42,6 @@
 		"prettier-plugin-astro": "^0.14.1",
 		"svelte": "^5.55.7",
 		"typescript": "^5.3.3",
-		"wrangler": "^4.0.0"
+		"wrangler": "^4.104.0"
 	}
 }
