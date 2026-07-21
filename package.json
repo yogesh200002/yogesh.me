@@ -17,11 +17,11 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.9",
-		"@astrojs/cloudflare": "^13.7.0",
-		"@astrojs/mdx": "^6.0.3",
-		"@astrojs/svelte": "^8.1.2",
+		"@astrojs/cloudflare": "^14.1.4",
+		"@astrojs/mdx": "^7.0.3",
+		"@astrojs/svelte": "^9.0.1",
 		"@tailwindcss/vite": "^4.3.0",
-		"astro": "^6.4.6",
+		"astro": "^7.1.3",
 		"lucide-svelte": "^0.396.0",
 		"tailwindcss": "^4.3.0"
 	},
