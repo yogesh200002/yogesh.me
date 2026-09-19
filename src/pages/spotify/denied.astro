@@ -1,0 +1,29 @@
+---
+export const prerender = false;
+
+import Layout from "@/layouts/site/index.astro";
+
+// whoever just logged in isn't the owner — show their id so I can grab my own
+const attemptedId = Astro.url.searchParams.get("id");
+---
+
+<Layout title="Nope">
+	<main
+		class="p-5 flex flex-col items-center justify-center gap-4 text-center font-urbanist min-h-[60vh]">
+		<h1 class="text-3xl font-bold">This is my site, bruv 🎧</h1>
+		<p class="text-gray-500 dark:text-gray-400">
+			Only the owner's Spotify plugs in here — nice try though.
+		</p>
+		{
+			attemptedId && (
+				<p class="text-sm text-gray-500 dark:text-gray-400">
+					You logged in as{" "}
+					<code class="rounded bg-zinc-100 px-1.5 py-0.5 dark:bg-slate-800">
+						{attemptedId}
+					</code>
+				</p>
+			)
+		}
+		<a href="/" class="text-teal-500 hover:underline">← Back to site</a>
+	</main>
+</Layout>

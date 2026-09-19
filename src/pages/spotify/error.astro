@@ -1,0 +1,22 @@
+---
+export const prerender = false;
+
+import Layout from "@/layouts/site/index.astro";
+
+const message =
+	Astro.url.searchParams.get("message") ?? "Something went sideways.";
+---
+
+<Layout title="Spotify error">
+	<main
+		class="p-5 flex flex-col items-center justify-center gap-4 text-center font-urbanist min-h-[60vh]">
+		<h1 class="text-3xl font-bold">Something broke 💥</h1>
+		<p class="text-gray-500 dark:text-gray-400">{message}</p>
+		<div class="flex gap-4">
+			<a href="/api/spotify/login" class="text-teal-500 hover:underline">
+				Try again
+			</a>
+			<a href="/" class="text-teal-500 hover:underline">← Back to site</a>
+		</div>
+	</main>
+</Layout>
