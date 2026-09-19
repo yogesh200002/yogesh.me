@@ -1,57 +1,14 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import MyPicture from "@/assets/images/my-picture.jpg";
-import { Image } from "astro:assets";
-import CurrentPlayer from "@/components/currentPlayer.svelte";
+import Layout from "@/layouts/site/index.astro";
+import HomeDetails from "./_home/components/home-details.astro";
+import HomeHero from "./_home/components/home-hero.astro";
 ---
 
-<Layout title="Yogesh S">
-	<main class="p-5 flex flex-col gap-5 font-urbanist text-lg">
-		<div class="flex flex-col sm:flex-row items-center gap-10">
-			<Image
-				height={150}
-				width={150}
-				class="rounded-full"
-				src={MyPicture}
-				quality="high"
-				loading="eager"
-				alt="Myself"
-			/>
-			<h1 class="font-bold text-5xl sm:text-6xl font-urbanist-italic">
-				Hi! I'm Yogesh
-			</h1>
-		</div>
-		<div>
-			<p class="prose prose-neutral dark:prose-invert">
-				Hey, I'm Yogesh.
-
-				I enjoy building ambitious software products-from AI-powered web applications and developer platforms to cross-platform desktop experiences.
-
-				My work sits at the intersection of product engineering, frontend architecture, and developer experience. I care deeply about building systems that are fast, maintainable, and enjoyable to use, both for customers and the engineers who work on them.
-
-				Over the years I've helped build and scale products used by thousands of users, architected frontend platforms from the ground up, and shipped features across the entire stack when needed.
-
-				I like solving difficult engineering problems, simplifying complex user experiences, and turning ideas into products people actually use.
-			</p>
-		</div>
-		<div>
-			<h2 class="font-bold cursor-default text-4xl text-red-300 w-fit">
-				About Me
-			</h2>
-			<p>
-				My journey into software started in an unexpected place.
-
-				I graduated in 2021 with a degree in Electrical and Electronics Engineering from SRM Valliammai Engineering College. While I enjoyed understanding how hardware systems worked, I found myself increasingly drawn toward software-the speed of iteration, the creativity involved in building things, and the ability to bring ideas to life with nothing more than a laptop and curiosity.
-
-				What began with learning HTML, CSS, and JavaScript quickly turned into a full-time obsession. I spent countless hours exploring modern web technologies, breaking things, fixing them, and gradually developing a deeper appreciation for software engineering as a craft.
-
-				Today, I enjoy building products that sit at the intersection of usability, performance, and maintainability. Whether it's architecting large frontend systems, designing developer tooling, building real-time experiences, or working across the stack to solve product problems, I'm most motivated when I'm turning complexity into something simple and reliable.
-
-				Over the years, I've worked on AI-powered applications, document-processing systems, cross-platform desktop software, developer platforms, and collaborative workflows. Regardless of the problem space, I care deeply about creating software that feels fast, intuitive, and dependable.
-
-				Outside of work, I enjoy exploring new technologies, studying how successful products are built, and experimenting with side projects that help me learn something new.
-			</p>
-		</div>
-		<CurrentPlayer client:load />
+<Layout
+	title="Yogesh S — Software Engineer"
+	description="Yogesh S is a software engineer building dependable product experiences, AI applications, and frontend systems.">
+	<main id="main-content" class="mx-auto flex w-full max-w-300 flex-col">
+		<HomeHero />
+		<HomeDetails />
 	</main>
 </Layout>

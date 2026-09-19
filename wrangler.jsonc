@@ -12,6 +12,12 @@
 	"assets": {
 		"directory": "./dist",
 	},
+	"kv_namespaces": [
+		{
+			"binding": "PERSONAL_SITE_KV",
+			"id": "eebe4bf1cad144c0a47b8dc0e6df6bdb",
+		},
+	],
 	"observability": {
 		"enabled": true,
 	},

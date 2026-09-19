@@ -1,0 +1,103 @@
+---
+export const prerender = false;
+
+import Layout from "@/layouts/site/index.astro";
+import { getValidAccessToken, SPOTIFY_API_URL } from "@/utils/spotify";
+
+interface SpotifyProfile {
+	id: string;
+	display_name: string | null;
+	email?: string;
+	images?: { url: string }[];
+	external_urls?: { spotify: string };
+	followers?: { total: number };
+}
+
+let profile: SpotifyProfile | null = null;
+const token = await getValidAccessToken();
+if (token) {
+	const res = await fetch(SPOTIFY_API_URL, {
+		headers: { Authorization: `Bearer ${token}` },
+	});
+	if (res.ok) {
+		profile = (await res.json()) as SpotifyProfile;
+	}
+}
+
+const avatar = profile?.images?.[0]?.url;
+---
+
+<Layout title="Spotify connected">
+	<main
+		class="p-5 flex flex-col items-center justify-center gap-6 text-center font-urbanist min-h-[60vh]">
+		{
+			profile ? (
+				<div class="flex flex-col items-center gap-6">
+					<div class="flex flex-col items-center gap-3">
+						{avatar && (
+							<img
+								src={avatar}
+								alt="Profile"
+								class="h-24 w-24 rounded-full shadow-md"
+							/>
+						)}
+						<h1 class="text-3xl font-bold">Connected ✓</h1>
+						<p class="text-gray-500 dark:text-gray-400">
+							Now playing is wired up to{" "}
+							<span class="font-medium">
+								{profile.display_name ?? profile.id}
+							</span>
+							.
+						</p>
+					</div>
+
+					<dl class="flex flex-col gap-1 text-sm text-gray-500 dark:text-gray-400">
+						<div>
+							<span class="font-medium">User ID:</span>{" "}
+							<code>{profile.id}</code>
+						</div>
+						{profile.email && (
+							<div>
+								<span class="font-medium">Email:</span>{" "}
+								{profile.email}
+							</div>
+						)}
+						{typeof profile.followers?.total === "number" && (
+							<div>
+								<span class="font-medium">Followers:</span>{" "}
+								{profile.followers.total}
+							</div>
+						)}
+					</dl>
+
+					<div class="flex gap-4">
+						{profile.external_urls?.spotify && (
+							<a
+								href={profile.external_urls.spotify}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-teal-500 hover:underline">
+								View on Spotify ↗
+							</a>
+						)}
+						<a href="/" class="text-teal-500 hover:underline">
+							← Back to site
+						</a>
+					</div>
+				</div>
+			) : (
+				<div class="flex flex-col items-center gap-3">
+					<h1 class="text-3xl font-bold">Not connected</h1>
+					<p class="text-gray-500 dark:text-gray-400">
+						Couldn't read a token back. Give it another go.
+					</p>
+					<a
+						href="/api/spotify/login"
+						class="text-teal-500 hover:underline">
+						Connect Spotify
+					</a>
+				</div>
+			)
+		}
+	</main>
+</Layout>

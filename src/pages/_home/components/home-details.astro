@@ -1,0 +1,41 @@
+---
+import Player from "./player";
+
+const current = [
+	["now", "building AI products at Lucio"],
+	["based", "Chennai, India"],
+	["stack", "React · TypeScript · Node · Redis · Docker when cornered"],
+];
+---
+
+<section
+	class="grid grid-cols-1 gap-10 border-b border-line bg-surface px-0 py-12 lg:grid-cols-[minmax(0,796px)_220px] lg:gap-14 lg:px-16"
+	aria-label="Current work and Spotify activity">
+	<div class="flex min-w-0 flex-col gap-11">
+		<section aria-labelledby="currently-title">
+			<h2
+				id="currently-title"
+				class="font-mono text-[13px] leading-5 tracking-[0.03em] text-amber">
+				## currently
+			</h2>
+			<dl class="mt-5 flex flex-col gap-2.75 font-mono text-sm leading-5">
+				{
+					current.map(([label, value]) => (
+						<div class="grid grid-cols-[88px_minmax(0,1fr)] gap-4.5">
+							<dt class="text-olive">+ {label}</dt>
+							<dd class="m-0 text-body">{value}</dd>
+						</div>
+					))
+				}
+			</dl>
+		</section>
+
+		<Player client:visible />
+	</div>
+
+	<aside
+		class="hidden flex-col gap-14 self-start pt-8 font-mono text-xs leading-4.75 text-muted lg:flex"
+		aria-hidden="true">
+		<p>// Live evidence that I am probably working.</p>
+	</aside>
+</section>

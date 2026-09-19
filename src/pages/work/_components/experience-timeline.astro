@@ -1,0 +1,129 @@
+---
+const roles = [
+	{
+		company: "Lucio",
+		url: "https://www.lucioai.com",
+		period: "Mar 2024 → Present",
+		location: "Bangalore, India",
+		index: "01 · Current",
+		title: "Software Development Engineer II, Frontend",
+		summary:
+			"Founding frontend engineer on an AI legal product. I shape complex assistant and document workflows, then follow them through APIs, persistence, auth and deployment when the interface depends on it.",
+		tags: "AI assistant · streaming state · documents · platform architecture",
+		highlights: [
+			"Built the AI Assistant interface across agentic workflows, conversation branching, parallel responses, follow-ups and failure states.",
+			"Designed resilient Redis Streams and SSE behaviour so long-running responses can reconnect, replay and recover without lying to the user.",
+			"Worked end to end on document flows, authentication, multi-tenancy and Node services; also moved the core frontend from CRA to Vite.",
+		],
+		note: [
+			"Joined for the frontend. That boundary lasted about five minutes.",
+			"Still figuring it out. Just with more repositories now.",
+		],
+	},
+	{
+		company: "AllMasters.ai",
+		url: "https://www.allmasters.ai",
+		period: "Oct 2022 → Feb 2024",
+		index: "02",
+		title: "Web Developer",
+		summary:
+			"Built logistics software for shippers, consignees and freight forwarders. Consolidated three separate portals into one product, with shared authentication, shipment tracking, live booking visibility and internal operations tooling.",
+		tags: "product frontend · shared UI · tracking · operations tools",
+		highlights: [
+			"Unified the Shipper, Consignee and Freight Forwarder portals around shared authentication, layouts and a reusable component library.",
+			"Built shipment tracking and document workflows so customers could follow cargo and manage shipment files from the same place.",
+			"Added booking visibility, dynamic rates, audit history and internal tools for managing routes, documents and pricing.",
+		],
+		note: [
+			"First developer job. They trusted me remarkably quickly.",
+			"Three portals walked into a codebase. One came out.",
+		],
+	},
+	{
+		company: "Mindtree",
+		url: "https://www.ltimindtree.com",
+		period: "Oct 2021 → Sep 2022",
+		index: "03 · First job",
+		title: "Support Engineer, Microsoft Power BI",
+		summary:
+			"Owned enterprise Power BI support cases from first report to resolution. The work was equal parts diagnosis, customer communication and making sure a ticket never disappeared between teams.",
+		tags: "Power BI · production support · incident diagnosis · customer systems",
+		highlights: [
+			"Reviewed the ticket, scheduled a call and worked directly with the customer to reproduce the issue and understand its actual impact.",
+			"Checked known product issues first, then investigated configuration, licensing, refresh pipelines and environment-specific behaviour.",
+			"Escalated genuine product defects to the product and SRE teams with evidence, while remaining the customer’s point of contact until resolution.",
+		],
+		note: ["Learned to read error messages. Rare skill, apparently."],
+	},
+];
+---
+
+<section class="bg-surface-deep" aria-labelledby="employment-title">
+	<header
+		class="flex items-center justify-between gap-6 border-b border-line px-0 py-6 font-mono text-xs leading-4.5 lg:px-16">
+		<h2
+			id="employment-title"
+			class="font-normal tracking-[0.08em] text-amber uppercase">
+			Employment
+		</h2>
+		<p class="text-right text-muted">
+			reverse chronological · the normal human format
+		</p>
+	</header>
+	<ol class="px-0 lg:px-16">
+		{
+			roles.map((role, roleIndex) => (
+				<li class="grid grid-cols-1 gap-8 border-b border-line py-12 last:border-b-0 md:grid-cols-[180px_minmax(0,640px)] md:gap-9 lg:grid-cols-[180px_minmax(0,640px)_180px] lg:py-14.5">
+					<div class="flex flex-col gap-1 font-mono text-xs leading-4.75 text-muted uppercase">
+						<a
+							class="mb-3 w-fit rounded-sm font-sans text-[24px] leading-8 font-semibold text-foreground normal-case decoration-transparent underline-offset-4 transition-colors hover:text-accent hover:underline"
+							href={role.url}
+							target="_blank"
+							rel="noreferrer">
+							{role.company}
+						</a>
+						<p>{role.period}</p>
+						{role.location && <p>{role.location}</p>}
+					</div>
+					<article class="min-w-0">
+						<p
+							class:list={[
+								"mb-4.5 font-mono text-xs leading-5 tracking-[0.08em] uppercase",
+								roleIndex === 0 ? "text-accent" : "text-amber",
+							]}>
+							{role.index}
+						</p>
+						<h3 class="text-[30px] leading-9.5 font-semibold tracking-tight text-balance sm:text-[34px] sm:leading-10.5">
+							{role.title}
+						</h3>
+						<p class="mt-4.5 text-[17px] leading-7 text-body">
+							{role.summary}
+						</p>
+						<p class="mt-4.5 font-mono text-xs leading-5 text-olive">
+							{role.tags}
+						</p>
+						<ul class="mt-2 flex flex-col">
+							{role.highlights.map((highlight) => (
+								<li class="flex gap-3 py-1.75 text-sm leading-5.75 text-muted">
+									<span
+										class="w-3.5 shrink-0 font-mono text-xs text-olive"
+										aria-hidden="true">
+										↳
+									</span>
+									{highlight}
+								</li>
+							))}
+						</ul>
+					</article>
+					<aside
+						class="hidden flex-col gap-5.5 self-start pt-13 font-mono text-xs leading-4.75 whitespace-pre-line text-olive lg:flex"
+						aria-hidden="true">
+						{role.note.map((line) => (
+							<p>// {line}</p>
+						))}
+					</aside>
+				</li>
+			))
+		}
+	</ol>
+</section>

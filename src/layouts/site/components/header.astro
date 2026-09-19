@@ -1,0 +1,59 @@
+---
+import ThemeSwitch from "./theme-switch";
+---
+
+<header class="w-full p-2 font-sans sm:p-5">
+	<nav class="flex justify-between">
+		<a class="flex items-center" href="/" data-home-link>
+			~/yogesh<span class="text-gray-400 dark:text-gray-500">$</span><span
+				class="ml-1 h-4 w-2 bg-foreground"
+				data-blink></span>
+		</a>
+		<div class="flex items-center gap-5" data-links-row>
+			<a
+				class="group flex items-center overflow-y-hidden"
+				href="/work"
+				data-active="false"
+				transition:persist
+				>Work<span
+					class="transition-transform duration-250 group-data-[active=false]:-translate-y-full motion-reduce:transition-none"
+					>(</span
+				><span
+					class="transition-transform duration-250 group-data-[active=false]:translate-y-full motion-reduce:transition-none"
+					>)</span
+				></a
+			>
+			<a
+				class="group flex items-center overflow-y-hidden"
+				href="/writing"
+				data-active="false"
+				transition:persist
+				>Writing<span
+					class="transition-transform duration-250 group-data-[active=false]:-translate-y-full motion-reduce:transition-none"
+					>(</span
+				><span
+					class="transition-transform duration-250 group-data-[active=false]:translate-y-full motion-reduce:transition-none"
+					>)</span
+				></a
+			>
+			<ThemeSwitch client:load />
+		</div>
+	</nav>
+</header>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const links = document.querySelectorAll<HTMLAnchorElement>(
+			"header div[data-links-row] a"
+		);
+		const currentActivePath = window.location.pathname;
+		links.forEach((link) => {
+			const linkPath = new URL(link.href).pathname;
+			if (currentActivePath !== "/" && linkPath === currentActivePath) {
+				link.setAttribute("data-active", "true");
+			} else {
+				link.setAttribute("data-active", "false");
+			}
+		});
+	});
+</script>
