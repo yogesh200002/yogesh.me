@@ -1,0 +1,35 @@
+---
+const dob = new Date(2000, 4, 20);
+const today = new Date();
+const birthdayHasPassed =
+	today.getUTCMonth() > dob.getUTCMonth() ||
+	(today.getUTCMonth() === dob.getUTCMonth() &&
+		today.getUTCDate() >= dob.getUTCDate());
+const age =
+	today.getUTCFullYear() - dob.getUTCFullYear() - (birthdayHasPassed ? 0 : 1);
+---
+
+<section
+	class="grid grid-cols-1 gap-10 border-b border-line bg-background px-0 py-12 lg:grid-cols-[minmax(0,796px)_220px] lg:gap-14 lg:px-16 lg:py-16"
+	aria-labelledby="hero-title">
+	<div class="min-w-0">
+		<p
+			class="mb-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-[13px] leading-5 text-muted">
+			<span class="text-sm font-semibold text-accent">[unreleased]</span>
+			<span>yogesh, human, v{age}ish</span>
+		</p>
+		<h1
+			id="hero-title"
+			class="flex flex-col text-[42px] leading-11.5 font-semibold tracking-[-0.04em] text-balance sm:text-[54px] sm:leading-14.5 lg:text-[62px] lg:leading-16.25">
+			<span>My degree says electrical engineer.</span>
+			<span class="text-muted">Let’s keep that between us.</span>
+		</h1>
+	</div>
+
+	<aside
+		class="hidden flex-col gap-5.5 self-start pt-12 font-mono text-xs leading-4.75 text-olive lg:flex"
+		aria-hidden="true">
+		<p>// A small corner where I’m accidentally honest.</p>
+		<p>// Please direct all circuit-related questions elsewhere.</p>
+	</aside>
+</section>
