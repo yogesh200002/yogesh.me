@@ -61,16 +61,18 @@ The `PERSONAL_SITE_KV` binding is configured in `wrangler.jsonc`.
 
 ## Commands
 
-| Command             | Purpose                                    |
-| ------------------- | ------------------------------------------ |
-| `pnpm dev`          | Start the Astro development server         |
-| `pnpm build`        | Type-check and create the production build |
-| `pnpm preview`      | Preview through Wrangler on port 4321      |
-| `pnpm lint`         | Run ESLint                                 |
-| `pnpm format`       | Format the repository with Prettier        |
-| `pnpm format:check` | Check formatting without changing files    |
-| `pnpm deploy:dry`   | Validate the Cloudflare deployment bundle  |
-| `pnpm deploy`       | Deploy to Cloudflare                       |
+| Command             | Purpose                                        |
+| ------------------- | ---------------------------------------------- |
+| `pnpm dev`          | Start the Astro development server             |
+| `pnpm build`        | Type-check and create the production build     |
+| `pnpm typecheck`    | Generate Cloudflare types and check TypeScript |
+| `pnpm cf-typegen`   | Regenerate Cloudflare runtime declarations     |
+| `pnpm preview`      | Preview through Wrangler on port 4321          |
+| `pnpm lint`         | Run ESLint                                     |
+| `pnpm format`       | Format the repository with Prettier            |
+| `pnpm format:check` | Check formatting without changing files        |
+| `pnpm deploy:dry`   | Validate the Cloudflare deployment bundle      |
+| `pnpm deploy`       | Deploy to Cloudflare                           |
 
 ## Dependency policy
 
