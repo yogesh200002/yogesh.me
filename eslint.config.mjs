@@ -14,9 +14,9 @@ export default defineConfig(
 			"worker-configuration.d.ts",
 		],
 	},
-	...js.configs.recommended,
+	js.configs.recommended,
 	...tseslint.configs.recommended,
-	...reactHooks.configs.flat.recommended,
+	reactHooks.configs.flat.recommended,
 	...astro.configs.recommended,
 	{
 		languageOptions: {
