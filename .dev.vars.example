@@ -1,0 +1,6 @@
+# Copy to `.dev.vars` (gitignored) and fill in real values for local dev.
+# In production these are set with `wrangler secret put <NAME>`.
+SPOTIFY_CLIENT_ID="your-spotify-app-client-id"
+SPOTIFY_CLIENT_SECRET="your-spotify-app-client-secret"
+# Your Spotify user id (open your profile, "Copy link to profile" -> the id in the URL).
+SPOTIFY_OWNER_ID="your-spotify-user-id"
