@@ -1,12 +1,12 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
-declare namespace App {
-	interface Locals extends Runtime {
-		env: {
-			readonly SPOTIFY_CLIENT_ID: string;
-			readonly SPOTIFY_CLIENT_SECRET: string;
-			readonly SPOTIFY_REFRESH_TOKEN: string;
-		};
+// Secrets that come from .dev.vars locally / `wrangler secret put` in prod.
+// The PERSONAL_SITE_KV binding is added separately in worker-configuration.d.ts.
+declare namespace Cloudflare {
+	interface Env {
+		SPOTIFY_CLIENT_ID: string;
+		SPOTIFY_CLIENT_SECRET: string;
+		SPOTIFY_OWNER_ID: string;
 	}
 }
