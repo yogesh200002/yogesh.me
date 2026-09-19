@@ -1,64 +1,31 @@
-import { defineConfig } from "eslint/config";
-import { fixupConfigRules } from "@eslint/compat";
-import globals from "globals";
-import astroParser from "astro-eslint-parser";
-import svelteParser from "svelte-eslint-parser";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import tseslint from "typescript-eslint";
+import astro from "eslint-plugin-astro";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import { defineConfig } from "eslint/config";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-	recommendedConfig: js.configs.recommended,
-	allConfig: js.configs.all,
-});
-
-export default defineConfig([
+export default defineConfig(
 	{
-		extends: fixupConfigRules(
-			compat.extends(
-				"standard-with-typescript",
-				"plugin:astro/recommended",
-				"plugin:astro/jsx-a11y-recommended",
-				"plugin:import/recommended",
-				"plugin:n/recommended",
-				"plugin-promise",
-				"plugin:svelte/recommended"
-			)
-		),
-		languageOptions: {
-			globals: {
-				...globals.browser,
-			},
-			ecmaVersion: "latest",
-			sourceType: "module",
-		},
-		rules: {},
+		ignores: [
+			"dist/",
+			".astro/",
+			".wrangler/",
+			"worker-configuration.d.ts",
+		],
 	},
+	...js.configs.recommended,
+	...tseslint.configs.recommended,
+	...reactHooks.configs.flat.recommended,
+	...astro.configs.recommended,
 	{
-		files: ["**/*.astro"],
 		languageOptions: {
-			parser: astroParser,
-			ecmaVersion: 5,
-			sourceType: "script",
-			parserOptions: {
-				parser: "@typescript-eslint/parser",
-				extraFileExtensions: [".astro"],
-			},
+			globals: { ...globals.browser, ...globals.node },
 		},
 	},
 	{
-		files: ["**/*.svelte"],
-		languageOptions: {
-			parser: svelteParser,
-			ecmaVersion: 5,
-			sourceType: "script",
-			parserOptions: {
-				parser: "@typescript-eslint/parser",
-			},
-		},
-	},
-]);
+		// Astro generates env.d.ts with triple-slash refs — that's expected here
+		files: ["**/*.d.ts"],
+		rules: { "@typescript-eslint/triple-slash-reference": "off" },
+	}
+);
