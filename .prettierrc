@@ -1,8 +1,10 @@
 {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "useTabs": true,
-    "semi": true,
-    "bracketSameLine": true,
-    "arrowParens": "always"
+	"trailingComma": "es5",
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": true,
+	"bracketSameLine": true,
+	"arrowParens": "always",
+	"plugins": ["prettier-plugin-astro"],
+	"overrides": [{ "files": "*.astro", "options": { "parser": "astro" } }]
 }
