@@ -175,7 +175,7 @@ function PlayerArtists() {
 	return (
 		<div
 			ref={artistWrpRef}
-			className="min-w-0 text-nowrap overflow-x-auto scrollbar-none">
+			className="min-w-0 w-1/2 text-nowrap overflow-x-auto scrollbar-none">
 			{track.artists.map(({ name, external_urls }, index) => (
 				<span key={external_urls.spotify}>
 					{index > 0 ? ", " : null}
