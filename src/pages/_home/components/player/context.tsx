@@ -1,4 +1,11 @@
-import { createContext, useEffect, useState, type ReactNode } from "react";
+import {
+	createContext,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+	type ReactNode,
+} from "react";
 
 interface Artist {
 	name: string;
@@ -44,6 +51,7 @@ interface PlayerContextValue {
 		isSyncing: boolean;
 	};
 	playback: Playback | null;
+	getCurrentPlayback: () => void;
 }
 
 export const PlayerContext = createContext<PlayerContextValue>({
@@ -52,6 +60,7 @@ export const PlayerContext = createContext<PlayerContextValue>({
 		isSyncing: false,
 	},
 	playback: null,
+	getCurrentPlayback: () => undefined,
 });
 
 export function PlayerContextProvider({ children }: { children: ReactNode }) {
@@ -60,65 +69,65 @@ export function PlayerContextProvider({ children }: { children: ReactNode }) {
 	>("loading");
 	const [isSyncing, setIsSyncing] = useState(false);
 	const [playback, setPlayback] = useState<Playback | null>(null);
+	const abortControllerRef = useRef<AbortController | null>(null);
 
-	useEffect(() => {
+	const requestCurrentPlayback = useCallback(async () => {
+		abortControllerRef.current?.abort();
 		const abortController = new AbortController();
+		abortControllerRef.current = abortController;
 
-		async function getCurrentPlayback() {
-			try {
-				const response = await fetch(
-					"/api/spotify/get-current-playback",
-					{
-						signal: abortController.signal,
-					}
-				);
-				if (response.status === 204) {
-					if (!abortController.signal.aborted) {
-						setPlayback(null);
-						setRequestStatus("ready");
-					}
-					return;
-				}
-				const responseData = (await response.json()) as {
-					message: string;
-					data?: Playback | null;
-				};
-				if (!response.ok) {
-					throw new Error(responseData.message);
-				}
+		try {
+			const response = await fetch("/api/spotify/get-current-playback", {
+				signal: abortController.signal,
+			});
+			if (response.status === 204) {
 				if (!abortController.signal.aborted) {
-					setPlayback(responseData.data ?? null);
+					setPlayback(null);
 					setRequestStatus("ready");
 				}
-			} catch {
-				if (!abortController.signal.aborted) {
-					setRequestStatus("error");
-				}
+				return;
+			}
+			const responseData = (await response.json()) as {
+				message: string;
+				data?: Playback | null;
+			};
+			if (!response.ok) {
+				throw new Error(responseData.message);
+			}
+			if (!abortController.signal.aborted) {
+				setPlayback(responseData.data ?? null);
+				setRequestStatus("ready");
+			}
+		} catch {
+			if (!abortController.signal.aborted) {
+				setRequestStatus("error");
+			}
+		} finally {
+			if (abortControllerRef.current === abortController) {
+				abortControllerRef.current = null;
+				setIsSyncing(false);
 			}
 		}
+	}, []);
 
-		async function syncCurrentPlayback() {
-			setIsSyncing(true);
-			try {
-				await getCurrentPlayback();
-			} finally {
-				if (!abortController.signal.aborted) {
-					setIsSyncing(false);
-				}
-			}
+	const getCurrentPlayback = useCallback(() => {
+		setIsSyncing(true);
+		void requestCurrentPlayback();
+	}, [requestCurrentPlayback]);
+
+	useEffect(() => {
+		async function loadInitialPlayback() {
+			await requestCurrentPlayback();
 		}
 
-		void getCurrentPlayback();
-		const interval = window.setInterval(
-			() => void syncCurrentPlayback(),
-			60 * 2 * 1000
-		);
+		void loadInitialPlayback();
+		const interval = window.setInterval(getCurrentPlayback, 60 * 2 * 1000);
 
 		return () => {
 			window.clearInterval(interval);
-			abortController.abort();
+			abortControllerRef.current?.abort();
 		};
-	}, []);
+	}, [getCurrentPlayback, requestCurrentPlayback]);
 
 	const status: PlayerStatus = (() => {
 		if (["loading", "error"].includes(requestStatus))
@@ -134,6 +143,7 @@ export function PlayerContextProvider({ children }: { children: ReactNode }) {
 			value={{
 				state: { status, isSyncing },
 				playback,
+				getCurrentPlayback,
 			}}>
 			{children}
 		</PlayerContext.Provider>
